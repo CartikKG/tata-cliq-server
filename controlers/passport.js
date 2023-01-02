@@ -3,30 +3,42 @@ const FacebookStrategy = require("passport-facebook").Strategy;
 const passport = require("passport");
 const User = require('../models/users.model')
 
+// passport.use(
+// 	new GoogleStrategy(
+// 		{
+// 			clientID: process.env.GOOGLE_CLIENT_ID,
+// 			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+// 			callbackURL: "/auth/google/callback",
+// 			scope: ["profile", "email"],
+// 		},
+// 		function (accessToken, refreshToken, profile, callback ) {
+// 			console.log(profile);
+// 			new User({
+// 				name: profile.displayName,
+// 				email: profile.emails[0].value,
+// 				avatar:profile.photos[0].value,
+// 				authType:'google'
+// 			}).save().then((user)=>{
+// 				console.log(user+ "user added");
+// 			})
+
+// 			callback(null, profile);
+// 		}
+// 	)
+// );
 passport.use(
 	new GoogleStrategy(
-		{
-			clientID: process.env.GOOGLE_CLIENT_ID,
-			clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-			callbackURL: "/auth/google/callback",
-			scope: ["profile", "email"],
-		},
-		function (accessToken, refreshToken, profile, callback ) {
-			console.log(profile);
-			new User({
-				name: profile.displayName,
-				email: profile.emails[0].value,
-				avatar:profile.photos[0].value,
-				authType:'google'
-			}).save().then((user)=>{
-				console.log(user+ "user added");
-			})
-
-			callback(null, profile);
-		}
+	  {
+		clientID:process.env.GOOGLE_CLIENT_ID,
+		clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+		callbackURL: "/auth/google/callback",
+	  },
+	  function (accessToken, refreshToken, profile, done) {
+		done(null, profile);
+	  }
 	)
-);
-
+  );
+  
 
 passport.use(
 	new FacebookStrategy(
