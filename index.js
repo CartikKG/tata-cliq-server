@@ -12,7 +12,7 @@ const passportSetup = require('./controlers/passport');
 const authRoute = require('./all_Routes/auth')
 const wishlistRoute = require('./all_Routes/wishlistRoute')
 const app=express();
-app.use(cors())
+// app.use(cors())
 app.use(
     cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
   );
