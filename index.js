@@ -16,7 +16,7 @@ app.use(
     cookieSession({ name: "session", keys: ["lama"], maxAge: 24 * 60 * 60 * 100 })
   );
 app.use(express.json())
-// app.use(cors())
+app.use(cors())
 app.use('/users',usersControler)
 app.use('/products',productControler)
 app.use('/cart',cartRoutes)
@@ -25,15 +25,15 @@ app.use('/wishlist',wishlistRoute)
 app.use(passport.initialize());
 app.use(passport.session());
  
-app.use(
-    cors({
+// app.use(
+//     cors({
         
-        origin:process.env.CLIENT_URL,
-        methods:"GET,POST,PUT,DELETE",
-        credentials:true
+//         origin:process.env.CLIENT_URL,
+//         methods:"GET,POST,PUT,DELETE",
+//         credentials:true
  
-    })
-)
+//     })
+// )
 app.use('/auth',authRoute)
 
 
