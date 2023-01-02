@@ -32,15 +32,15 @@ router.get(
 );
 
 
-router.get("/facebook", passport.authenticate("facebook",  { scope: ['user_friends', 'manage_pages'] } ));
+// router.get("/facebook", passport.authenticate("facebook",  { scope: ['user_friends', 'manage_pages'] } ));
 
-router.get(
-	"/facebook/callback",
-	passport.authenticate("facebook", {
-		successRedirect: process.env.CLIENT_URL,
-		failureRedirect: "/login/failed",
-	})
-);
+// router.get(
+// 	"/facebook/callback",
+// 	passport.authenticate("facebook", {
+// 		successRedirect: process.env.CLIENT_URL,
+// 		failureRedirect: "/login/failed",
+// 	})
+// );
 
 router.get("/logout", (req, res) => {
 	req.logout();
