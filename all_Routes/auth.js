@@ -13,6 +13,7 @@ function generateToken(user) {
 const CLIENT_URL = "http://localhost:3000";
 
 router.get("/login/success",async (req, res) => {
+  // res.redirect('http://localhost:3009')
   if (req.user) {
    
     let name=req.user.displayName;
@@ -23,9 +24,11 @@ router.get("/login/success",async (req, res) => {
     if (exitisUser) {
        exitisUser=exitisUser.toJSON();
        let token= generateToken(exitisUser);
-       res.send({
-        token:token
-       });
+      //  res.redirect('http://localhost:3009')
+      res.send({token})
+      //  res.send({
+      //   token:token
+      //  });
     }else{
        let user = await User.create({
          name,
@@ -35,9 +38,11 @@ router.get("/login/success",async (req, res) => {
        });
        user = user.toJSON();
        let token= generateToken(user);
-       res.send({
-        token:token
-       });
+      //  res.redirect(`http://localhost:3009`)
+      res.send({token})
+      //  res.send({
+      //   token:token
+      //  });
         
     }
   }
