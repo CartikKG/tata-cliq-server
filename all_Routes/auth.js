@@ -24,8 +24,8 @@ router.get("/login/success",async (req, res) => {
     if (exitisUser) {
        exitisUser=exitisUser.toJSON();
        let token= generateToken(exitisUser);
-      //  res.redirect('http://localhost:3009')
-      res.send({token})
+       res.redirect(`https://tata-cliq.netlify.app/google/success?code=${token}`)
+      // res.send({token})
       //  res.send({
       //   token:token
       //  });
@@ -39,7 +39,7 @@ router.get("/login/success",async (req, res) => {
        user = user.toJSON();
        let token= generateToken(user);
       //  res.redirect(`http://localhost:3009`)
-      res.send({token})
+      res.redirect(`https://tata-cliq.netlify.app/google/success?code=${token}`)
       //  res.send({
       //   token:token
       //  });
