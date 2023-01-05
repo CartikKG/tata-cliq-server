@@ -65,7 +65,7 @@ router.get("/google", passport.authenticate("google", { scope: ['email', 'profil
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: "/auth//login/success",
+    successRedirect: "/auth/login/success",
     failureRedirect: "/login/failed",
   })
 );
